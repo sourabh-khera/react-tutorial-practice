@@ -32,7 +32,7 @@ class App extends Component {
 
   render() {
     let renderPersons = [];
-    const btnclass = [classes.button];
+    let btnclass = '';
     if(this.state.showPersons) {
       renderPersons = this.state.persons.map((p, id) => {
         return <Person
@@ -43,14 +43,14 @@ class App extends Component {
           change={(event) => this.nameHandler(event, p.id)}
         />
       });
-      btnclass.push(classes.Red)
+      btnclass = classes.Red;
     }
 
     return (
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button className={btnclass.join(' ')} onClick={this.buttonHandler}>Toggle Person</button>
+        <button className={btnclass} onClick={this.buttonHandler}>Toggle Person</button>
         {renderPersons}
       </div>
     );
