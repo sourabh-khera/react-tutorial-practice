@@ -32,26 +32,29 @@ class App extends Component {
 
   render() {
     const style = {
+      backgroundColor: 'greenyellow',
       width: '100px',
       borderRadius: '5px',
       textAlign: 'center',
       padding: '10px',
       cursor: 'pointer',
-      outline: 'none'
+      outline: 'none',
     };
-    const renderPersons = this.state.showPersons ?
-      (this.state.persons.map((p, id) => {
+    
+    let renderPersons = [];
+
+    if(this.state.showPersons) {
+      renderPersons = this.state.persons.map((p, id) => {
         return <Person
-          key={p.id} 
+          key={p.id}
           name={p.name}
           age={p.age}
           click={() => this.deleteHandler(p.id)}
           change={(event) => this.nameHandler(event, p.id)}
         />
-      })
-      )
-      :
-      null;
+      });
+      style.backgroundColor = 'red';
+    }
 
     return (
       <div className="App">
