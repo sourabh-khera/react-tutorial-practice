@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Person from './Person/Person';
 
 import './App.css';
+
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'greenyellow'};
+  width: 100px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: ${props => props.alt ? 'darkred' : 'forestgreen'};
+    color: #fff
+  }
+`;
 
 class App extends Component {
   state = {
@@ -31,16 +46,6 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'greenyellow',
-      width: '100px',
-      borderRadius: '5px',
-      textAlign: 'center',
-      padding: '10px',
-      cursor: 'pointer',
-      outline: 'none',
-    };
-    
     let renderPersons = [];
 
     if(this.state.showPersons) {
@@ -53,14 +58,16 @@ class App extends Component {
           change={(event) => this.nameHandler(event, p.id)}
         />
       });
-      style.backgroundColor = 'red';
+      // style.backgroundColor = 'red';
     }
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button style={style} onClick={this.buttonHandler}>Toggle Person</button>
+        <StyledButton alt={this.state.showPersons} onClick={this.buttonHandler}>
+          Toggle Person
+        </StyledButton>
         {renderPersons}
       </div>
     );
