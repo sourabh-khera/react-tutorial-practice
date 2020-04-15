@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 import './App.css';
@@ -39,6 +40,10 @@ class App extends Component {
       padding: '10px',
       cursor: 'pointer',
       outline: 'none',
+      ':hover': {
+        backgroundColor: 'forestgreen',
+        color: '#fff'
+      },
     };
     
     let renderPersons = [];
@@ -53,18 +58,24 @@ class App extends Component {
           change={(event) => this.nameHandler(event, p.id)}
         />
       });
-      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'darkred',
+        color: '#fff'
+      }
+      style.backgroundColor = 'red'
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working</p>
-        <button style={style} onClick={this.buttonHandler}>Toggle Person</button>
-        {renderPersons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p>This is really working</p>
+          <button style={style} onClick={this.buttonHandler}>Toggle Person</button>
+          {renderPersons}
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
