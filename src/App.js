@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 
-import './App.css';
+import classes from './App.css';
 
 class App extends Component {
   state = {
@@ -31,18 +31,8 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'greenyellow',
-      width: '100px',
-      borderRadius: '5px',
-      textAlign: 'center',
-      padding: '10px',
-      cursor: 'pointer',
-      outline: 'none',
-    };
-    
     let renderPersons = [];
-
+    const btnclass = [classes.button];
     if(this.state.showPersons) {
       renderPersons = this.state.persons.map((p, id) => {
         return <Person
@@ -53,14 +43,14 @@ class App extends Component {
           change={(event) => this.nameHandler(event, p.id)}
         />
       });
-      style.backgroundColor = 'red';
+      btnclass.push(classes.Red)
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p>This is really working</p>
-        <button style={style} onClick={this.buttonHandler}>Toggle Person</button>
+        <button className={btnclass.join(' ')} onClick={this.buttonHandler}>Toggle Person</button>
         {renderPersons}
       </div>
     );

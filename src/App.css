@@ -1,3 +1,28 @@
 .App {
   text-align: center;
 }
+
+.button {
+  background-color: greenyellow;
+  width: 100px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: forestgreen;
+  color: white;
+}
+
+.button.Red {
+  background-color: red;
+}
+
+.button.Red:hover {
+  background-color: darkred;
+  color: white;
+}
+
