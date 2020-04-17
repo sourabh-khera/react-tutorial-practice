@@ -4,13 +4,16 @@ import AuthContext from '../../../Context/context';
 
 import classes from './Person.css';
 
-const inputElem = createRef();
 
 
 class Person extends Component {
 
+  constructor(props){
+    super(props);
+     this.inputElem = createRef();
+  }
   componentDidMount(){
-    inputElem.current.focus();
+    this.inputElem.current.focus();
   }
 
   render() {
@@ -23,7 +26,7 @@ class Person extends Component {
           <p onClick={click}>I'm {name} and I am {age} years old</p>
           <p>{children}</p>
           {/* <input ref={(inputElem) => {this.inputElem = inputElem}} type='text' onChange={change} value={name} /> */}
-          <input ref={inputElem} type='text' onChange={change} value={name} />
+          <input ref={this.inputElem} type='text' onChange={change} value={name} />
         </Wrapper>
     )
   }
